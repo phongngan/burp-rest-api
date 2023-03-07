@@ -40,7 +40,7 @@ public class BurpExtender implements IBurpExtender {
     private static void legacyRegisterExtenderCallbacks(IBurpExtenderCallbacks callbacks)
             throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, InstantiationException, ClassNotFoundException {
         Class clazz = loadClass("burp.LegacyBurpExtender");
-        Object obj = clazz.newInstance();
+        Object obj = clazz.getDeclaredConstructor().newInstance();
         Method method = clazz.getMethod("registerExtenderCallbacks", IBurpExtenderCallbacks.class);
         method.invoke(obj, callbacks);
     }
@@ -57,8 +57,8 @@ public class BurpExtender implements IBurpExtender {
             css.add(i.getClass().getCanonicalName());
             try {
                 clazz = i.loadClass(name);
-                clazz.newInstance();
-            } catch (ClassNotFoundException|InstantiationException|IllegalAccessException|NoClassDefFoundError e) {
+                clazz.getDeclaredConstructor().newInstance();
+            } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | NoClassDefFoundError | NoSuchMethodException | InvocationTargetException e) {
                 clazz = null;
             }
             i = i.getParent();

@@ -102,34 +102,37 @@ public class BurpService {
         }
 
         //Project Data File
-        if (!args.containsOption(PROJECT_FILE)) {
-            projectData = new String[]{generateProjectDataTempFile()};
-        } else {
-            projectData = args.getOptionValues(PROJECT_FILE).stream().toArray(String[]::new);
-            for(int i = 0; i < projectData.length; i++) {
-                projectData[i] = PROJECT_FILE_ARGUMENT + projectData[i];
-            }
-        }
+        projectData = new String[]{};
+//        if (!args.containsOption(PROJECT_FILE)) {
+//            projectData = new String[]{generateProjectDataTempFile()};
+//        } else {
+//            projectData = args.getOptionValues(PROJECT_FILE).stream().toArray(String[]::new);
+//            for(int i = 0; i < projectData.length; i++) {
+//                projectData[i] = PROJECT_FILE_ARGUMENT + projectData[i];
+//            }
+//        }
 
-        //Project Options File
-        if (!args.containsOption(CONFIG_FILE)) {
-            projectOptions = new String[]{generateProjectOptionsTempFile()};
-        } else {
-            projectOptions = args.getOptionValues(CONFIG_FILE).stream().toArray(String[]::new);
-            for(int i = 0; i < projectOptions.length; i++) {
-                projectOptions[i] = CONFIG_FILE_ARGUMENT + projectOptions[i];
-            }
-        }
+            projectOptions = new String[]{};
+//        Project Options File
+//        if (!args.containsOption("--"+CONFIG_FILE)) {
+//            projectOptions = new String[]{generateProjectOptionsTempFile()};
+//        } else {
+//            projectOptions = args.getOptionValues(CONFIG_FILE).stream().toArray(String[]::new);
+//            for(int i = 0; i < projectOptions.length; i++) {
+//                projectOptions[i] = CONFIG_FILE_ARGUMENT + projectOptions[i];
+//            }
+//        }
 
-        //User Options File
-        if (!args.containsOption(USER_CONFIG_FILE)) {
-            userOptions = new String[]{USER_CONFIG_FILE_ARGUMENT + ucu.injectExtensions(generateUserOptionsTempFile())};
-        } else {
-            userOptions = args.getOptionValues(USER_CONFIG_FILE).stream().toArray(String[]::new);
-            for(int i = 0; i < userOptions.length; i++) {
-                userOptions[i] = USER_CONFIG_FILE_ARGUMENT + ucu.injectExtensions(userOptions[i]);
-            }
-        }
+        userOptions = new String[]{};
+//        User Options File
+//        if (!args.containsOption("--"+USER_CONFIG_FILE)) {
+//            userOptions = new String[]{USER_CONFIG_FILE_ARGUMENT + ucu.injectExtensions(generateUserOptionsTempFile())};
+//        } else {
+//            userOptions = args.getOptionValues(USER_CONFIG_FILE).stream().toArray(String[]::new);
+//            for(int i = 0; i < userOptions.length; i++) {
+//                userOptions[i] = USER_CONFIG_FILE_ARGUMENT + ucu.injectExtensions(userOptions[i]);
+//            }
+//        }
 
         // apikey argument parsing, if present
         if (args.containsOption(API_KEY_ARGUMENT)) {
